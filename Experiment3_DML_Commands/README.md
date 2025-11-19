@@ -46,163 +46,149 @@ Used to retrieve records from a table.
 SELECT column1, column2 FROM table_name WHERE condition;
 ```
 **Question 1**
---
--- <img width="1210" height="581" alt="image" src="https://github.com/user-attachments/assets/6473a008-b856-4e01-a187-9caf3e5eac3b" />
+<img width="934" height="551" alt="image" src="https://github.com/user-attachments/assets/249c1da2-7a68-4377-a38d-7b21ce981ba8" />
 
 
-```sql
--- UPDATE employees
-SET salary = 8000
-WHERE employee_id = 105
-AND salary < 5000;
+```
+select ename 
+from emp 
+where lower(substr(ename, 1,2)) = lower(substr(ename,length(ename) - 1,2));
 ```
 
 **Output:**
 
-<img width="1217" height="315" alt="image" src="https://github.com/user-attachments/assets/893671d1-d09a-4ec5-8c56-023f09c68354" />
+<img width="482" height="305" alt="image" src="https://github.com/user-attachments/assets/839b8ef5-521b-4a83-8b85-e0204de14b73" />
 
 
 **Question 2**
----
--- <img width="748" height="83" alt="image" src="https://github.com/user-attachments/assets/20d01b25-6b66-4660-9eb7-f3f8c309c921" />
+<img width="1000" height="710" alt="image" src="https://github.com/user-attachments/assets/f1fb7e6c-eaf4-42d4-9c5a-c1d49c297467" />
 
 
-```sql
--- UPDATE customer
-SET grade = 5
-WHERE city = 'Chennai';
+```
+select ename, hiredate,
+  case strftime('%w', hiredate)
+    when '0' then 'Sunday'
+    when '1' then 'Monday'
+    when '2' then 'Tuesday'
+    when '3' then 'Wednesday'
+    when '4' then 'Thursday'
+    when '5' then 'Friday'
+    when '6' then 'Saturday'
+  end as day_of_week
+from emp;  
 ```
 
 **Output:**
 
-<img width="1224" height="536" alt="image" src="https://github.com/user-attachments/assets/cd3032ee-6be6-45fc-be16-3193f646e582" />
-
+<img width="809" height="353" alt="image" src="https://github.com/user-attachments/assets/420cddf9-f73d-476c-9a1e-f08ef025ef96" />
 
 **Question 3**
----
--- <img width="882" height="529" alt="image" src="https://github.com/user-attachments/assets/4d73f4bd-ceac-43f6-9f0f-609a415965d1" />
+<img width="1086" height="493" alt="image" src="https://github.com/user-attachments/assets/2cbed97f-064d-406c-9bab-1331996d8424" />
 
-
-```sql
--- UPDATE products
-SET sell_price = sell_price * 1.10
-WHERE supplier_id =6;
+```
+select product_id, original_price, discount_percentage, original_price-(original_price*discount_percentage) as discounted_price
+from Products;
 ```
 
 **Output:**
-
-<img width="1218" height="663" alt="image" src="https://github.com/user-attachments/assets/77a6e3a1-1a65-4279-9671-39bd9da0b32f" />
-
+<img width="1195" height="368" alt="image" src="https://github.com/user-attachments/assets/02aa4b35-d595-47bb-92ee-65c28831c1bf" />
 
 **Question 4**
----
--- <img width="1213" height="770" alt="image" src="https://github.com/user-attachments/assets/c68e8cf3-a2ee-42cb-a28a-6fc8188882b8" />
+<img width="1228" height="338" alt="image" src="https://github.com/user-attachments/assets/ba0afcbf-0d47-4a5c-9542-ff13748adc07" />
 
-
-```sql
--- UPDATE employees
-SET first_name = 'John'
-WHERE department_id = 80
-AND commission_pct < 0.35;
+```
+select product_id,original_price,discount_percentage,original_price*(1-discount_percentage) as discounted_price
+from products
+where original_price*(1-discount_percentage) between 100 and 250;
 ```
 
 **Output:**
-
-![O<img width="1213" height="617" alt="image" src="https://github.com/user-attachments/assets/e98b753e-52fa-4335-bbcd-03a11ddc7e4d" />
+<img width="1202" height="231" alt="image" src="https://github.com/user-attachments/assets/c49c4aa4-3479-4a4a-a2a7-b084e31ca0fd" />
 
 
 **Question 5**
----
--- <img width="918" height="633" alt="image" src="https://github.com/user-attachments/assets/b237cb36-dd1f-47ce-9878-4ea5005c4d90" />
+<img width="1147" height="451" alt="image" src="https://github.com/user-attachments/assets/41466e13-b91d-46ad-bc6c-110eefdf9ee7" />
 
 
-```sql
--- UPDATE employees
-SET hire_date = '2024-01-24'
-WHERE department_id = 50;
+```
+select customer_id,cust_name,city,grade,salesman_id from customer where city='New York' or grade<=100 or grade is NULL;
 ```
 
 **Output:**
+<img width="1165" height="369" alt="image" src="https://github.com/user-attachments/assets/871874dc-6027-436f-9a6a-fb1f57cadffa" />
 
-<img width="1223" height="353" alt="image" src="https://github.com/user-attachments/assets/eaeaf8df-48e3-42ef-8a9b-410e37b314a8" />
 
 **Question 6**
----
--- <img width="1231" height="488" alt="image" src="https://github.com/user-attachments/assets/37e2134f-03e5-4bbf-bd7f-410020f821d1" />
+
+<img width="768" height="528" alt="image" src="https://github.com/user-attachments/assets/e7329269-dbe0-4ca4-bdc1-118539d21596" />
 
 
-```sql
--- DELETE FROM customer
-WHERE GRADE = 2
-AND CUST_NAME LIKE 'M%'
-AND PAYMENT_AMT < 3000;
+```
+select id, Round(decimal,3) as rounded_value from Calculations;
 ```
 
 **Output:**
-<img width="1233" height="491" alt="image" src="https://github.com/user-attachments/assets/7100a7bb-e43b-47c1-8033-41ce404320e7" />
+
+<img width="610" height="249" alt="image" src="https://github.com/user-attachments/assets/4e7fa8b3-8950-4de9-b522-278c313e1d45" />
 
 
 **Question 7**
----
---<img width="866" height="150" alt="image" src="https://github.com/user-attachments/assets/f9a92eb3-72e2-422e-b016-e3ab7118719f" />
+
+<img width="1233" height="558" alt="image" src="https://github.com/user-attachments/assets/a7cff6f1-dfbc-4766-8f11-5f0067e6be50" />
 
 
-```sql
--- DELETE FROM doctors
-WHERE doctor_id = 1;
+```
+select id,value2,
+   case
+      when value2<30 then 'Poor'
+      when value2 between 30 and 70 then 'Average'
+      when value2>70 then 'Excellent'
+    end as performance
+from Calculations;    
 ```
 
 **Output:**
 
-<img width="1237" height="328" alt="image" src="https://github.com/user-attachments/assets/cadf412f-6491-4d18-ba14-5170cd11128b" />
-
+<img width="787" height="375" alt="image" src="https://github.com/user-attachments/assets/164d119f-3af3-4adc-955f-4d281e54cf99" />
 
 **Question 8**
----
---<img width="1222" height="666" alt="image" src="https://github.com/user-attachments/assets/5b5ecad0-e108-4061-aa03-09906f13d089" />
+
+<img width="745" height="500" alt="image" src="https://github.com/user-attachments/assets/b94c9bbb-0330-4fbf-b322-a812e2acc939" />
 
 
-```sql
--- DELETE FROM customer
-WHERE GRADE < 2;
+```
+select patient_id, first_name, admission_date from Patients where admission_date between "2023-01-01" and "2023-12-31";
 ```
 
 **Output:**
 
-<img width="743" height="621" alt="image" src="https://github.com/user-attachments/assets/057e4a76-9d71-4c70-8b4c-f6be500817db" />
-
+<img width="753" height="282" alt="image" src="https://github.com/user-attachments/assets/d8a20cda-3c1e-4c9f-a90a-64bbda6d537d" />
 
 **Question 9**
----
--- <img width="750" height="545" alt="image" src="https://github.com/user-attachments/assets/abecfcdd-5a35-4090-9208-c8e8b6219543" />
 
+<img width="843" height="455" alt="image" src="https://github.com/user-attachments/assets/7da42faa-bc41-4490-9b0e-b7276b617267" />
 
-```sql
--- DELETE FROM doctors
-WHERE last_name IS NULL;
+```
+delete from Customer where GRADE!=3;
 ```
 
 **Output:**
 
-<img width="1258" height="473" alt="image" src="https://github.com/user-attachments/assets/668a8153-2fbe-4858-9e39-75109620d7d6" />
-
+<img width="1170" height="319" alt="image" src="https://github.com/user-attachments/assets/3a8d9c5c-7a6d-4652-8429-0796e690fcd6" />
 
 **Question 10**
----
--- <img width="1220" height="797" alt="image" src="https://github.com/user-attachments/assets/3116ffaf-3260-442b-b0d2-2d0b0d133a7e" />
+
+<img width="891" height="461" alt="image" src="https://github.com/user-attachments/assets/457bae1c-c913-42f8-9ce5-c7409b47acd2" />
 
 
-```sql
--- DELETE FROM customer
-WHERE CUST_CITY <> 'New York'
-AND OUTSTANDING_AMT > 5000;
+```
+delete from Surgeries where surgery_date="2024-02-28";
 ```
 
 **Output:**
 
-<img width="1219" height="662" alt="image" src="https://github.com/user-attachments/assets/3a1d8fc0-f1b9-4f9e-a6d1-6cb79cbccfd6" />
+<img width="1170" height="319" alt="image" src="https://github.com/user-attachments/assets/773ab541-0b01-4beb-939a-5c9c882b7504" />
 
-<img width="1436" height="581" alt="image" src="https://github.com/user-attachments/assets/be708513-e5e5-4a06-ab40-82930aa67836" />
 
 
 ## RESULT
