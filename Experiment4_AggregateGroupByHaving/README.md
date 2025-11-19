@@ -38,172 +38,170 @@ HAVING condition;
 
 **Question 1**
 --
--- <img width="1191" height="635" alt="image" src="https://github.com/user-attachments/assets/954f7ca6-510f-4fe7-bab1-df0def454c29" />
+<img width="910" height="601" alt="image" src="https://github.com/user-attachments/assets/b1a979fd-8493-4d11-9aa5-c978816b79df" />
 
 
 ```sql
--- SELECT PatientID, COUNT(*) AS TotalMedications
-FROM Prescriptions
-GROUP BY PatientID;
+select DoctorID, count(*) as
+TotalPrescriptions
+from Prescriptions
+group by DoctorID;
 ```
 
 **Output:**
 
-<img width="1167" height="820" alt="image" src="https://github.com/user-attachments/assets/e61e7719-8c41-41a7-b930-73ecdf697c9e" />
+<img width="621" height="661" alt="image" src="https://github.com/user-attachments/assets/36ed53fe-c3a8-493d-9aea-c1c5cc83b094" />
 
 
 **Question 2**
 ---
--- <img width="1194" height="470" alt="image" src="https://github.com/user-attachments/assets/53061996-5b90-46d8-a06b-7e1ec019049a" />
+<img width="939" height="581" alt="image" src="https://github.com/user-attachments/assets/bc6edc6d-74f0-4e08-a4c3-a51d77bf64a9" />
 
 
 ```sql
--- SELECT strftime('%Y-%m', created_date) AS Month, COUNT(*) AS TotalRecords
-FROM MedicalRecords
-GROUP BY strftime('%Y-%m', created_date);
-
+select 
+  Medication,
+  Avg(Dosage) as AvgDosage
+from 
+  Prescriptions
+group by 
+  Medication;
 ```
 
 **Output:**
 
-<img width="1221" height="728" alt="image" src="https://github.com/user-attachments/assets/35395542-f18a-421c-ad39-07ae8aaadd30" />
+<img width="568" height="663" alt="image" src="https://github.com/user-attachments/assets/75942895-7ca7-4d56-806c-9bd026732e63" />
 
 
 **Question 3**
 ---
--- <img width="1152" height="446" alt="image" src="https://github.com/user-attachments/assets/391ef3e5-91d4-4c1f-90bc-07170dec6a73" />
+<img width="646" height="593" alt="image" src="https://github.com/user-attachments/assets/137a8159-903c-4309-8738-65b30a9bb9ad" />
 
 
 ```sql
--- SELECT Gender, COUNT(*) AS TotalPatients
-FROM Patients
-GROUP BY Gender;
+select DATE(AppointmentDateTime) as AppointmentDate, count(AppointmentID) as TotalAppointments
+from Appointments
+group by AppointmentDate;
 ```
 
 **Output:**
 
-<img width="1075" height="424" alt="image" src="https://github.com/user-attachments/assets/542ed005-70d8-488d-8701-375f41021b41" />
+<img width="695" height="579" alt="image" src="https://github.com/user-attachments/assets/7e0c1abe-51b8-4bce-9f64-1bc619e0070a" />
 
 
 **Question 4**
 ---
--- <img width="1071" height="461" alt="image" src="https://github.com/user-attachments/assets/34a23d21-1871-466e-a904-4c82fad72dad" />
-
+<img width="871" height="452" alt="image" src="https://github.com/user-attachments/assets/6b2dcba1-7c88-4c9c-a774-dc2a1fb45732" />
 
 ```sql
---SELECT name, email, LENGTH(email) AS min_email_length
+SELECT COUNT(*) AS COUNT
 FROM customer
-WHERE LENGTH(email) = (SELECT MIN(LENGTH(email)) FROM customer)
-ORDER BY id
-LIMIT 1;
+WHERE city <> 'Noida';
 ```
 
 **Output:**
-<img width="1163" height="373" alt="image" src="https://github.com/user-attachments/assets/55f4caa3-e2a0-4427-ae1c-1e144bce0402" />
 
+<img width="327" height="267" alt="image" src="https://github.com/user-attachments/assets/5d8cd0da-2d35-4e54-a532-951382f244f7" />
 
 **Question 5**
 ---
--- <img width="1186" height="548" alt="image" src="https://github.com/user-attachments/assets/8beb3088-5a8a-460c-a954-84051c0ee8dd" />
-
+<img width="781" height="424" alt="image" src="https://github.com/user-attachments/assets/ea72b3ac-cc07-430e-adf9-9696c3a179b9" />
 
 ```sql
--- SELECT SUM(inventory) AS total_available_amount
-FROM fruits
-WHERE price > 0.5;
+select avg(income) as
+avg_income
+from employee
+where name LIKE 'A%';
 ```
 
 **Output:**
 
-<img width="958" height="386" alt="image" src="https://github.com/user-attachments/assets/467749ae-9f60-4ec6-8f74-e428cc13f18d" />
+<img width="338" height="268" alt="image" src="https://github.com/user-attachments/assets/bccbad9f-1a93-4ade-989b-77c68c106345" />
+
 
 **Question 6**
 ---
--- <img width="985" height="498" alt="image" src="https://github.com/user-attachments/assets/9c1c5fc6-05fc-4599-883d-22bf10304713" />
-
+<img width="705" height="451" alt="image" src="https://github.com/user-attachments/assets/5a693b52-f538-4349-a56b-52e7c26021f0" />
 
 
 ```sql
--- SELECT name AS Employee_Name, age AS Age
-FROM employee
-ORDER BY age ASC, id ASC
-LIMIT 1;
+select 
+  name as Employee_Name,
+  age as Age
+from 
+  employee
+order by 
+  age ASC
+limit 1;
 ```
 
 **Output:**
 
-<img width="834" height="376" alt="image" src="https://github.com/user-attachments/assets/9eba2bb0-48c9-448c-95bf-495be99bbd36" />
+<img width="598" height="266" alt="image" src="https://github.com/user-attachments/assets/bd4bcfcc-4f38-4e03-bd2f-c52095d0a980" />
 
 
 **Question 7**
 ---
---<img width="1195" height="473" alt="image" src="https://github.com/user-attachments/assets/a61b9100-5484-4809-9629-f9941cc1da6c" />
-
+<img width="766" height="442" alt="image" src="https://github.com/user-attachments/assets/4d14442d-42b1-4643-b74e-66a4f75fcec0" />
 
 ```sql
--- SELECT COUNT(DISTINCT age) AS COUNT
-FROM employee;
+select count(Distinct city) as
+unique_cities
+from customer;
 ```
 
 **Output:**
 
-<img width="677" height="391" alt="image" src="https://github.com/user-attachments/assets/8d3161b0-2f6f-4e5c-9a1f-987d9382502c" />
-
+<img width="390" height="260" alt="image" src="https://github.com/user-attachments/assets/3eda8b23-ce9f-415b-bdbe-3cf70c37107e" />
 
 **Question 8**
 ---
--- <img width="1284" height="482" alt="image" src="https://github.com/user-attachments/assets/c8b01ef8-2aeb-4dc6-a74a-7a1490014f3f" />
+<img width="1228" height="448" alt="image" src="https://github.com/user-attachments/assets/c65a62e4-bd41-48e3-873f-8b201ca84c8f" />
 
 
 ```sql
--- SELECT category_id, SUM(price) AS Total_Cost
-FROM products
-GROUP BY category_id
-HAVING SUM(price) > 50;
-
+select category_id, sum(price) as Total_Cost
+from products
+group by category_id
+having sum(price)>50;
 ```
 
 **Output:**
-
-<img width="963" height="403" alt="image" src="https://github.com/user-attachments/assets/83293cd6-8b2f-4f14-96e0-b1f6d77375aa" />
+<img width="546" height="291" alt="image" src="https://github.com/user-attachments/assets/dad821a6-7425-462a-acbd-9cd6ec15e4f2" />
 
 
 **Question 9**
 ---
--- <img width="1220" height="470" alt="image" src="https://github.com/user-attachments/assets/ac27ab22-5252-43c1-a03d-99c8289dbf40" />
+<img width="1221" height="451" alt="image" src="https://github.com/user-attachments/assets/e2fe926c-0db6-49cb-8f5b-6e0606ce9991" />
 
 
 ```sql
--- SELECT category_id, MIN(price) AS Price
-FROM products
-GROUP BY category_id
-HAVING MIN(price) < 10;
+select category_id, count(product_name) as COUNT
+from products
+where category_id>2
+group by category_id;
 ```
 
 **Output:**
 
-<img width="796" height="427" alt="image" src="https://github.com/user-attachments/assets/02d62af5-1bbe-47fd-a68e-03b56f4ffe44" />
+<img width="531" height="288" alt="image" src="https://github.com/user-attachments/assets/f9ad8f02-5eef-42f3-94ea-750a82eb4905" />
 
 
 **Question 10**
 ---
--- <img width="1185" height="501" alt="image" src="https://github.com/user-attachments/assets/a8e55c37-efeb-4e1b-b823-498060d379ea" />
+<img width="1233" height="457" alt="image" src="https://github.com/user-attachments/assets/0b39323d-73b8-4bb9-be6e-edbcd22d6368" />
 
 
 ```sql
--- SELECT address, SUM(salary)
-FROM customer1
-GROUP BY address
-HAVING SUM(salary) > 2000
-ORDER BY address;
+select occupation, AVG(workhour)
+from employee1
+group by occupation
+having AVG(workhour) between 10 and 12;
 ```
 
 **Output:**
 
-<img width="814" height="551" alt="image" src="https://github.com/user-attachments/assets/b451b346-3bca-4539-8ae7-969be3f61d6d" />
-
-<img width="1521" height="782" alt="image" src="https://github.com/user-attachments/assets/1e6b7a66-3dff-455a-b835-6953c49b6294" />
-
+<img width="560" height="328" alt="image" src="https://github.com/user-attachments/assets/bfef6aee-125d-4061-a2bc-e0d5815435e0" />
 
 
 
